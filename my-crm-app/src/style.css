@@ -3,20 +3,25 @@
   box-sizing: border-box;
 }
 
+/* Color Variables */
 :root {
-  --bg: #0b0c10;
-  --bg2: #111218;
-  --text: #e6e6e6;
-  --muted: #a6a6a6;
-  --brand: #e50914;
-  --accent: #2dd4bf;
-  --card: #171923;
-  --line: #232635;
-  --pill: #1f2231;
-  --success: #22c55e;
-  --danger: #ef4444;
-  --warning: #f59e0b;
+  --color-background-primary: #0b0c10;
+  --color-background-secondary: #111218;
+  --color-text: #e6e6e6;
+  --color-text-muted: #a6a6a6;
+  --color-brand: #e50914;
+  --color-accent: #2dd4bf;
+  --color-card-background: #171923;
+  --color-line: #232635;
+  --color-pill-background: #1f2231;
+  --color-success: #22c55e;
+  --color-danger: #ef4444;
+  --color-warning: #f59e0b;
   --shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+
+  --radius-sm: 8px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
 }
 
 html,
@@ -26,10 +31,12 @@ body {
 
 body {
   margin: 0;
-  background: linear-gradient(180deg, #0b0c10, #0e0f14);
-  color: var(--text);
+  background: linear-gradient(180deg, var(--color-background-primary), var(--color-background-secondary));
+  color: var(--color-text);
   font: 15px/1.45 system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
 }
+
+/* --- */
 
 /* Topbar */
 .topbar {
@@ -37,7 +44,7 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 10px 16px;
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid var(--color-line);
   position: sticky;
   top: 0;
   background: rgba(11, 12, 16, 0.8);
@@ -54,7 +61,7 @@ body {
 .brand img {
   width: 44px;
   height: 44px;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   object-fit: cover;
 }
 
@@ -72,12 +79,13 @@ body {
   flex-wrap: wrap;
 }
 
+/* Buttons and Inputs */
 .btn {
   background: #202334;
   border: 1px solid #2a2d40;
-  color: var(--text);
+  color: var(--color-text);
   padding: 9px 12px;
-  border-radius: 10px;
+  border-radius: var(--radius-md);
   cursor: pointer;
   box-shadow: var(--shadow);
   transition: 0.2s;
@@ -89,12 +97,12 @@ body {
 }
 
 .btn.primary {
-  background: var(--brand);
+  background: var(--color-brand);
   border-color: transparent;
 }
 
 .btn.danger {
-  background: var(--danger);
+  background: var(--color-danger);
   border-color: transparent;
 }
 
@@ -105,18 +113,20 @@ body {
 
 .btn.icon {
   padding: 6px 8px;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   background: #2a2d40;
 }
 
 .input {
   background: #1a1d2b;
   border: 1px solid #2a2d40;
-  color: var(--text);
+  color: var(--color-text);
   padding: 10px 12px;
-  border-radius: 10px;
+  border-radius: var(--radius-md);
   min-width: 150px;
 }
+
+/* --- */
 
 /* Toolbar */
 .toolbar {
@@ -125,28 +135,30 @@ body {
   align-items: center;
   padding: 12px 16px;
   flex-wrap: wrap;
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid var(--color-line);
 }
+
+/* --- */
 
 /* KPIs */
 .kpis {
   display: grid;
   gap: 12px;
-  grid-template-columns: repeat(4, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   padding: 16px;
 }
 
 .kpi {
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: 14px;
+  background: var(--color-card-background);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-lg);
   padding: 14px 16px;
   box-shadow: var(--shadow);
 }
 
 .kpi-label {
   font-size: 12px;
-  color: var(--muted);
+  color: var(--color-text-muted);
   margin-bottom: 6px;
 }
 
@@ -155,7 +167,9 @@ body {
   font-weight: 700;
 }
 
-/* Rows */
+/* --- */
+
+/* Rows (Home View) */
 .row-title {
   margin: 12px 16px;
 }
@@ -166,7 +180,6 @@ body {
   overflow-x: auto;
   padding: 6px 16px;
   scroll-snap-type: x mandatory;
-  /* Updated rules to hide scrollbar */
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
@@ -178,9 +191,9 @@ body {
 .card {
   min-width: 260px;
   max-width: 260px;
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: 14px;
+  background: var(--color-card-background);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-lg);
   overflow: hidden;
   scroll-snap-align: center;
   cursor: pointer;
@@ -206,7 +219,7 @@ body {
 }
 
 .card-sub {
-  color: var(--muted);
+  color: var(--color-text-muted);
   font-size: 12px;
   margin-top: 2px;
 }
@@ -219,7 +232,7 @@ body {
 }
 
 .pill {
-  background: var(--pill);
+  background: var(--color-pill-background);
   padding: 4px 8px;
   border-radius: 999px;
   font-size: 11px;
@@ -241,26 +254,27 @@ body {
   border-color: #2f3d57;
 }
 
-/* Kanban */
-/* Update this section in your style.css */
+/* --- */
 
+/* Kanban */
 .kanban {
   display: flex;
-  overflow-x: auto; /* Enables horizontal scrolling */
+  overflow-x: auto;
   gap: 1rem;
   padding: 1rem;
 }
 
 .column {
-  flex-shrink: 0; /* Prevents columns from shrinking */
-  min-width: 300px; /* Ensures a minimum width for each column */
-  background-color: var(--dark-300);
+  flex-shrink: 0;
+  min-width: 300px;
+  background-color: var(--color-card-background);
   border-radius: var(--radius-lg);
   padding: 1rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
+
 .column h4 {
   margin: 12px;
 }
@@ -274,18 +288,21 @@ body {
 }
 
 .col-card {
-  background: var(--card);
+  background: var(--color-card-background);
   border: 1px dashed #353a56;
   border-radius: 12px;
   padding: 10px;
+  cursor: pointer;
 }
 
 .col-card .meta {
   display: flex;
   justify-content: space-between;
-  color: var(--muted);
+  color: var(--color-text-muted);
   font-size: 12px;
 }
+
+/* --- */
 
 /* Reports */
 .reports {
@@ -302,9 +319,9 @@ body {
 }
 
 .report-card {
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: 14px;
+  background: var(--color-card-background);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-lg);
   padding: 12px;
 }
 
@@ -315,17 +332,28 @@ body {
   margin-bottom: 8px;
 }
 
+/* --- */
+
 /* Modal */
+dialog {
+  border: none;
+  padding: 0;
+  background-color: transparent;
+}
+
 dialog::backdrop {
   background: rgba(0, 0, 0, 0.65);
 }
 
 .modal {
-  width: min(1050px, 96vw);
-  border: none;
-  background: #10121a;
-  color: var(--text);
+  width: min(1200px, 96vw);
+  background: var(--color-background-secondary);
+  color: var(--color-text);
   border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  max-height: 90vh;
 }
 
 .modal-header {
@@ -333,14 +361,24 @@ dialog::backdrop {
   align-items: center;
   justify-content: space-between;
   padding: 12px 16px;
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid var(--color-line);
+  flex-shrink: 0;
 }
 
 .modal-body {
   display: grid;
-  grid-template-columns: 340px 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 16px;
   padding: 12px 16px;
+  overflow: auto;
+}
+
+.modal-left {
+  overflow: visible;
+}
+
+.modal-right {
+  overflow: visible;
 }
 
 .field {
@@ -352,7 +390,7 @@ dialog::backdrop {
 
 .field label {
   font-size: 12px;
-  color: var(--muted);
+  color: var(--color-text-muted);
 }
 
 .field.grid2 {
@@ -365,8 +403,8 @@ dialog::backdrop {
   width: 100%;
   height: 200px;
   object-fit: cover;
-  border-radius: 10px;
-  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-line);
 }
 
 .actions {
@@ -386,7 +424,7 @@ dialog::backdrop {
 
 .ai-title {
   font-size: 12px;
-  color: var(--muted);
+  color: var(--color-text-muted);
 }
 
 .audit {
@@ -396,7 +434,7 @@ dialog::backdrop {
   max-height: 180px;
   overflow: auto;
   font-size: 12px;
-  color: var(--muted);
+  color: var(--color-text-muted);
 }
 
 .modal-footer {
@@ -404,17 +442,22 @@ dialog::backdrop {
   gap: 8px;
   align-items: center;
   padding: 12px 16px;
-  border-top: 1px solid var(--line);
+  border-top: 1px solid var(--color-line);
+  flex-shrink: 0;
 }
 
 .spacer {
   flex: 1;
 }
 
+/* --- */
+
 /* Utils */
 .hidden {
   display: none;
 }
+
+/* --- */
 
 /* Responsive */
 @media (max-width: 900px) {
@@ -427,13 +470,10 @@ dialog::backdrop {
   .report-grid {
     grid-template-columns: 1fr;
   }
-  .kanban {
-    grid-template-columns: 1fr 1fr;
-  }
 }
 
 @media (max-width: 600px) {
-  .kanban {
-    grid-template-columns: 1fr;
+  .modal-body {
+    height: auto;
   }
 }
